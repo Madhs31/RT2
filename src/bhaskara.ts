@@ -1,4 +1,4 @@
-export default class Bhaskara {
+export default class bhaskara {
   calcular(a: number, b: number, c: number): string {
     let delta = b * b - 4 * a * c
     if (delta < 0) {
