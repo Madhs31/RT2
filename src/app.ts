@@ -1,12 +1,12 @@
 import * as readline from 'readline'
-import Calculo from './Calculo'
-import Bhaskara from './Bhaskara'
-import Soma from './Soma'
-import Multiplicacao from './Multiplicacao'
-import Subtracao from './Subtracao'
-import Divisao from './Divisao'
-import Potenciacao from './Potenciacao'
-import Radiciacao from './Radiciacao'
+import bhaskara from './bhaskara'
+import calculo from './calculo'
+import divisao from './divisao'
+import multiplicacao from './multiplicacao'
+import potenciacao from './potenciacao'
+import radiciacao from './radiciacao'
+import soma from './soma'
+import subtracao from './subtracao'
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -15,13 +15,13 @@ const rl = readline.createInterface({
 
 function iniciarCalculadora() {
   console.log('\nCalculadora CLI - Escolha uma opção:')
-  console.log('1. Soma')
-  console.log('2. Subtração')
-  console.log('3. Multiplicação')
-  console.log('4. Divisão')
-  console.log('5. Potenciação')
-  console.log('6. Radiciação')
-  console.log('7. Equação do segundo grau (Bhaskara)')
+  console.log('1. soma')
+  console.log('2. subtração')
+  console.log('3. multiplicação')
+  console.log('4. divisão')
+  console.log('5. potenciação')
+  console.log('6. radiciação')
+  console.log('7. equação do segundo grau (bhaskara)')
   console.log('8. Sair')
 
   rl.question('\nDigite o número da operação desejada: ', (opcao) => {
@@ -36,7 +36,7 @@ function iniciarCalculadora() {
         'Digite os coeficientes a, b e c separados por espaço: ',
         (input) => {
           let [a, b, c] = input.split(' ').map(Number)
-          let resultado = new Bhaskara().calcular(a, b, c)
+          let resultado = new bhaskara().calcular(a, b, c)
           console.log('Resultado:', resultado)
           iniciarCalculadora()
         }
@@ -44,26 +44,26 @@ function iniciarCalculadora() {
     } else {
       rl.question('Digite dois números separados por espaço: ', (input) => {
         let [num1, num2] = input.split(' ').map(Number)
-        let operacao: Calculo
+        let operacao: calculo
 
         switch (opcao) {
           case '1':
-            operacao = new Soma()
+            operacao = new soma()
             break
           case '2':
-            operacao = new Subtracao()
+            operacao = new subtracao()
             break
           case '3':
-            operacao = new Multiplicacao()
+            operacao = new multiplicacao()
             break
           case '4':
-            operacao = new Divisao()
+            operacao = new divisao()
             break
           case '5':
-            operacao = new Potenciacao()
+            operacao = new potenciacao()
             break
           case '6':
-            operacao = new Radiciacao()
+            operacao = new radiciacao()
             break
           default:
             console.log('Opção inválida!')
